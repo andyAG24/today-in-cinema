@@ -2,9 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { TodayInCinema } from './pages/TodayInCinema/TodayInCinema';
-import { SoonInCinema } from './pages/SoonInCinema/SoonInCinema';
-import { NavigationBar } from './components';
+import { NavigationBar } from 'components';
+import { SoonInCinema, TodayInCinema } from 'pages';
 
 function App() {
   return (

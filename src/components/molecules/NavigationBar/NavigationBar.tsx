@@ -2,7 +2,7 @@ import React from 'react';
 import { AppBar, Avatar, Box, Button, Container, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from "react-router-dom";
-import { navigationLinks } from '../../utils/constants/navigationLinks';
+import { navigationLinks } from 'utils/constants/navigationLinks';
 
 export const NavigationBar = () => {
   const navigateTo = useNavigate();

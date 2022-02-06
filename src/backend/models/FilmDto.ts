@@ -1,7 +1,4 @@
-import { Country } from "../../types/Country"
-import { Film } from "../../types/Film"
-import { Genre } from "../../types/Genre"
-import { ProductionStatus } from "../../types/ProductionStatus"
+import { Country, Film, Genre, ProductionStatus } from "types";
 
 export interface FilmDto {
   kinopoiskId: number;
