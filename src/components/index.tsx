@@ -1,1 +1,1 @@
-export { NavigationBar } from './molecules/NavigationBar/NavigationBar';
+export { NavigationBar } from './molecules/NavigationBar';
