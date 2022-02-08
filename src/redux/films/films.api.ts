@@ -10,8 +10,9 @@ export const filmsApi = createApi({
   endpoints: (build) => ({
     getPremieres: build.query<PremiereResponseItem[], PremiereGetResponseParams>({
       query: (params) => filmsEndpoints.getPremieres(params),
+      transformResponse: (response: { items: PremiereResponseItem[], total: number }) => response.items,
     }),
   }),
 });
 
-export const { useLazyGetPremieresQuery } = filmsApi;
+export const { useGetPremieresQuery, useLazyGetPremieresQuery } = filmsApi;

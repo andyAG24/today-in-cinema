@@ -10,7 +10,7 @@ export const PremiereList = ({ list }: PropTypes) => {
   return (
     <Grid container spacing={4}>
       {list.map((item) => (
-        <Grid item xs={3}>
+        <Grid item xs={3} key={item.kinopoiskId}>
           <PremiereItem key={item.kinopoiskId} film={item} />
         </Grid>
       ))}

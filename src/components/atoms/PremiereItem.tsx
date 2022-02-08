@@ -27,9 +27,9 @@ export const PremiereItem = ({ film }: PropTypes) => {
       />
       <CardMedia
         component="img"
-        height="194"
+        height="294"
         image={film.posterUrl}
-        alt="Paella dish"
+        alt={film.nameRu}
       />
       <CardContent>
         <Grid container direction={'column'} spacing={1}>
