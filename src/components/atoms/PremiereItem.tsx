@@ -20,14 +20,19 @@ export const PremiereItem = ({ film }: PropTypes) => {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card style={{ height: '100%' }}>
       <CardHeader
-        title={film.nameRu}
-        subheader={<Moment locale="ru" format="D MMM YYYY">{film.premiereRu}</Moment>}
+        style={{ overflow: 'hidden', display: 'block' }}
+        title={
+          <Typography noWrap gutterBottom variant='h6' component='h4'>
+            {film.nameRu}
+          </Typography>
+        }
+        subheader={<Moment locale='ru' format='D MMM YYYY'>{film.premiereRu}</Moment>}
       />
       <CardMedia
-        component="img"
-        height="294"
+        component='img'
+        height='294'
         image={film.posterUrl}
         alt={film.nameRu}
       />
@@ -35,24 +40,24 @@ export const PremiereItem = ({ film }: PropTypes) => {
         <Grid container direction={'column'} spacing={1}>
           <Grid item container direction={'row'}>
             <Grid item xs={8}>
-              <Typography variant="body1" color="text.secondary">
+              <Typography variant='body1' color='text.secondary'>
                 {film.nameEn} ({film.year})
               </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body1" color="text.secondary">
+              <Typography variant='body1' color='text.secondary'>
                 {film.duration} мин.
               </Typography>
             </Grid>
           </Grid>
           <Grid item container direction={'column'} spacing={1}>
             <Grid item>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant='body2' color='text.secondary'>
                 Жанр: {getStringFromArray(film.genres, 'genre')}
               </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant='body2' color='text.secondary'>
                 {getStringFromArray(film.countries, 'country')}
               </Typography>
             </Grid>
