@@ -8,7 +8,7 @@ interface PropTypes {
   film: PremiereResponseItem;
 }
 
-export const PremiereItem = ({ film }: PropTypes) => {
+export const FilmItem = ({ film }: PropTypes) => {
 
   const getStringFromArray = (array: any[], field: string): string => {
     let result = '';
@@ -28,7 +28,20 @@ export const PremiereItem = ({ film }: PropTypes) => {
             {film.nameRu}
           </Typography>
         }
-        subheader={<Moment locale='ru' format='D MMM YYYY'>{film.premiereRu}</Moment>}
+        subheader={
+          <Grid container justifyContent={'space-between'} direction={'row'}>
+            <Grid item justifyContent={'flex-end'}>
+              <Typography variant='body1' color='text.secondary'>
+                <Moment locale='ru' format='D MMM YYYY'>{film.premiereRu}</Moment>
+              </Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <Typography variant='body1' color='text.secondary' style={{ textAlign: 'end' }}>
+                {film.duration} мин.
+              </Typography>
+            </Grid>
+          </Grid>
+        }
       />
       <CardMedia
         component='img'
@@ -37,16 +50,11 @@ export const PremiereItem = ({ film }: PropTypes) => {
         alt={film.nameRu}
       />
       <CardContent>
-        <Grid container direction={'column'} spacing={1}>
+        <Grid container direction={'column'} spacing={2}>
           <Grid item container direction={'row'}>
-            <Grid item xs={8}>
-              <Typography variant='body1' color='text.secondary'>
-                {film.nameEn} ({film.year})
-              </Typography>
-            </Grid>
             <Grid item>
               <Typography variant='body1' color='text.secondary'>
-                {film.duration} мин.
+                {film.nameEn ? film.nameEn + ', ': ''}{film.year}
               </Typography>
             </Grid>
           </Grid>

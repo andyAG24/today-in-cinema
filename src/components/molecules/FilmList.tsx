@@ -1,12 +1,12 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import { PremiereResponseItem } from "backend/models/PremiereResponseItemDto";
-import { PremiereItem } from "components/atoms/PremiereItem";
+import { FilmItem } from "components/atoms/FilmItem";
 
 interface PropTypes {
   list: PremiereResponseItem[];
 }
 
-export const PremiereList = ({ list }: PropTypes) => {
+export const FilmList = ({ list }: PropTypes) => {
   return (
     <Grid 
       container
@@ -17,7 +17,7 @@ export const PremiereList = ({ list }: PropTypes) => {
     >
       {list.map((item) => (
         <Grid item key={item.kinopoiskId} xs={3}>
-          <PremiereItem key={item.kinopoiskId} film={item} />
+          <FilmItem key={item.kinopoiskId} film={item} />
         </Grid>
       ))}
     </Grid>

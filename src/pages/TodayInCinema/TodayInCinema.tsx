@@ -1,6 +1,6 @@
 import { Box, LinearProgress } from '@mui/material';
 import { PremiereResponseItem } from 'backend/models/PremiereResponseItemDto';
-import { PremiereList } from 'components/molecules/PremiereList';
+import { FilmList } from 'components/molecules/FilmList';
 import moment from 'moment';
 import React from 'react';
 import { useGetPremieresQuery } from 'redux/films/films.api';
@@ -20,7 +20,7 @@ export const TodayInCinema = () => {
   return (
     <Box sx={{ m: 5 }}>
       { alreadyInCinemaFilms ?
-        <PremiereList list={alreadyInCinemaFilms} />
+        <FilmList list={alreadyInCinemaFilms} />
         :
         <LinearProgress />
       }
