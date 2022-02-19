@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardMedia, Grid, Typography } from '@mui/material';
+import { Card, CardContent, CardHeader, CardMedia, Grid, Tooltip, Typography } from '@mui/material';
 import { PremiereResponseItem } from 'backend/models/PremiereResponseItemDto';
 import React from 'react';
 import Moment from 'react-moment';
@@ -24,9 +24,11 @@ export const FilmItem = ({ film }: PropTypes) => {
       <CardHeader
         style={{ overflow: 'hidden', display: 'block' }}
         title={
-          <Typography noWrap gutterBottom variant='h6' component='h4'>
-            {film.nameRu ? film.nameRu: film.nameEn}
-          </Typography>
+          <Tooltip title={film.nameRu ? film.nameRu: film.nameEn} arrow>
+            <Typography noWrap gutterBottom variant='h6' component='h4'>
+              {film.nameRu ? film.nameRu: film.nameEn}
+            </Typography>
+          </Tooltip>
         }
         subheader={
           <Grid container justifyContent={'space-between'} direction={'row'}>
@@ -36,9 +38,11 @@ export const FilmItem = ({ film }: PropTypes) => {
               </Typography>
             </Grid>
             <Grid item xs={4}>
-              <Typography variant='body1' color='text.secondary' style={{ textAlign: 'end' }}>
-                {film.duration} мин.
-              </Typography>
+              { film.duration &&
+                <Typography variant='body1' color='text.secondary' style={{ textAlign: 'end' }}>
+                  {film.duration} мин.
+                </Typography>
+              }
             </Grid>
           </Grid>
         }
