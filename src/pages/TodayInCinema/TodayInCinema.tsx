@@ -1,4 +1,4 @@
-import { Box, LinearProgress } from '@mui/material';
+import { Grid, LinearProgress } from '@mui/material';
 import { PremiereResponseItem } from 'backend/models/PremiereResponseItemDto';
 import { FilmList } from 'components/molecules/FilmList';
 import moment from 'moment';
@@ -19,12 +19,18 @@ export const TodayInCinema = () => {
   })}
 
   return (
-    <Box sx={{ m: 5 }}>
-      { alreadyInCinemaFilms ?
-        <FilmList list={alreadyInCinemaFilms} />
-        :
-        <LinearProgress />
-      }
-    </Box>
+    <Grid container item xs={'auto'}
+     sx={{ m: '3rem' }}
+     spacing={3}
+     direction={'column'}
+     >
+      <Grid item>
+        { alreadyInCinemaFilms ?
+          <FilmList list={alreadyInCinemaFilms} />
+          :
+          <LinearProgress />
+        }
+      </Grid>
+    </Grid>
   )
 }
