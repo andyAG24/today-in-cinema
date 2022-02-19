@@ -1,29 +1,55 @@
-import { Box, LinearProgress } from '@mui/material';
-import { PremiereResponseItem } from 'backend/models/PremiereResponseItemDto';
+import { Autocomplete, Grid, LinearProgress, TextField } from '@mui/material';
 import { FilmList } from 'components/molecules/FilmList';
 import moment from 'moment';
-import React from 'react';
-import { useGetPremieresQuery } from 'redux/films/films.api';
-import { monthsValues } from 'utils/constants/months';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useLazyGetPremieresQuery } from 'redux/films/films.api';
+import { monthsValuesEn, monthsValuesRu } from 'utils/constants/months';
+import * as _ from 'lodash';
 
 export const SoonInCinema = () => {
   const now = moment().locale('en');
-  const monthNumber = +now.format('M') - 1;
   const year = +now.format('yyyy');
-  const { data: filmList } = useGetPremieresQuery({ year, month: monthsValues[monthNumber] });
-  let alreadyInCinemaFilms: PremiereResponseItem[] = [];
-  if (filmList) {
-    alreadyInCinemaFilms = filmList.filter((film) => {
-    if (moment(film.premiereRu).isAfter(now)) return film;
-  })}
+  const currentMonthNumber = +now.format('M') - 1;
+  const [monthNumber, setMonthNumber] = useState(currentMonthNumber);
+  const [getPremieres, { data: filmData, isFetching }] = useLazyGetPremieresQuery();
+
+  const onMonthChange = (value: typeof monthsValuesRu[number]) => {
+    const index = monthsValuesRu.findIndex(item => item === value);
+    setMonthNumber(index);
+  }
+
+  useEffect(() => {
+    getPremieres({ month: monthsValuesEn[monthNumber], year });
+  }, [getPremieres, monthNumber, year]);
+
+  const filmList = useMemo(() => {
+    if (monthNumber === currentMonthNumber) {
+      return filmData?.filter(film => moment(film.premiereRu).isSameOrAfter(now));
+    }
+    return filmData;
+  }, [monthNumber, currentMonthNumber, filmData, now]);
 
   return (
-    <Box sx={{ m: 5 }}>
-      { alreadyInCinemaFilms ?
-        <FilmList list={alreadyInCinemaFilms} />
-        :
-        <LinearProgress />
-      }
-    </Box>
+    <Grid container item xs={'auto'}
+     sx={{ m: '3rem' }}
+     spacing={3}
+     direction={'column'}
+     >
+      <Grid item>
+        <Autocomplete
+          disablePortal
+          id='combo-box-demo'
+          options={monthsValuesRu}
+          value={monthsValuesRu[monthNumber]}
+          onChange={(event, value) => value && onMonthChange(value)}
+          sx={{ width: 300 }}
+          renderInput={(params) => <TextField {...params} label='Месяц' />}
+        />
+      </Grid>
+      <Grid item>
+        { isFetching && <LinearProgress /> }
+        { !(_.isEmpty(filmList)) && <FilmList list={filmList!} /> }
+      </Grid>
+    </Grid>
   )
 }

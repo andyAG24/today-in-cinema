@@ -25,7 +25,7 @@ export const FilmItem = ({ film }: PropTypes) => {
         style={{ overflow: 'hidden', display: 'block' }}
         title={
           <Typography noWrap gutterBottom variant='h6' component='h4'>
-            {film.nameRu}
+            {film.nameRu ? film.nameRu: film.nameEn}
           </Typography>
         }
         subheader={

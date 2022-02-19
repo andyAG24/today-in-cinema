@@ -1,4 +1,19 @@
-export const monthsValues = [
+export const monthsValuesRu = [
+  'ЯНВАРЬ',
+  'ФЕВРАЛЬ',
+  'МАРТ',
+  'АПРЕЛЬ',
+  'МАЙ',
+  'ИЮНЬ',
+  'ИЮЛЬ',
+  'АВГУСТ',
+  'СЕНТЯБРЬ',
+  'ОКТЯБРЬ',
+  'НОЯБРЬ',
+  'ДЕКАБРЬ',
+] as const;
+
+export const monthsValuesEn = [
   'JANUARY',
   'FEBRUARY',
   'MARCH',
@@ -13,4 +28,4 @@ export const monthsValues = [
   'DECEMBER',
 ] as const;
 
-export type Month = typeof monthsValues[number];
+export type Month = typeof monthsValuesEn[number];
