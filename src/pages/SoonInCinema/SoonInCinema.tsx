@@ -47,8 +47,11 @@ export const SoonInCinema = () => {
         />
       </Grid>
       <Grid item>
-        { isFetching && <LinearProgress /> }
-        { !(_.isEmpty(filmList)) && <FilmList list={filmList!} /> }
+        { (!isFetching && !(_.isEmpty(filmList))) ? 
+          <FilmList list={filmList!} /> 
+          : 
+          <LinearProgress /> 
+        }
       </Grid>
     </Grid>
   )
