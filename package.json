@@ -30,7 +30,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -52,6 +54,33 @@
     ]
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.178"
+    "@babel/plugin-transform-react-jsx": "^7.17.3",
+    "@babel/plugin-transform-strict-mode": "^7.16.7",
+    "@babel/plugin-transform-typescript": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-flow": "^7.16.7",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/enzyme": "^3.10.11",
+    "@types/lodash": "^4.14.178",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
+    "babel-jest": "^27.5.1",
+    "jest": "^27.5.1",
+    "react-test-renderer": "^17.0.2"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "src/types/",
+      "src/backend/models/",
+      ".type.ts",
+      "src/utils/constants/",
+      "setupTests.ts",
+      "index.tsx",
+      "react-app-env.d.ts"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}"
+    ]
   }
 }

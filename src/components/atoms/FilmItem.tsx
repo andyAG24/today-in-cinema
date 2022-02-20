@@ -3,7 +3,7 @@ import { PremiereResponseItem } from 'backend/models/PremiereResponseItemDto';
 import React from 'react';
 import Moment from 'react-moment';
 import 'moment/locale/ru';
-import { getStringFromArray } from 'utils/constants/string';
+import { getStringFromNestedObjectArrayByField } from 'utils/string/string';
 import { Link } from 'react-router-dom';
 
 interface PropTypes {
@@ -11,7 +11,6 @@ interface PropTypes {
 }
 
 export const FilmItem = ({ film }: PropTypes) => {
-
   return (
     <Card style={{ height: '100%' }}>
       <CardActionArea style={{ height: '100%' }} component={Link} to={`/film/${film.kinopoiskId}`}>
@@ -59,12 +58,12 @@ export const FilmItem = ({ film }: PropTypes) => {
             <Grid item container direction={'column'} spacing={1}>
               <Grid item>
                 <Typography variant='body2' color='text.secondary'>
-                  Жанр: {getStringFromArray(film.genres, 'genre')}
+                  Жанр: {getStringFromNestedObjectArrayByField(film.genres, 'genre')}
                 </Typography>
               </Grid>
               <Grid item>
                 <Typography variant='body2' color='text.secondary'>
-                  {getStringFromArray(film.countries, 'country')}
+                  {getStringFromNestedObjectArrayByField(film.countries, 'country')}
                 </Typography>
               </Grid>
             </Grid>
