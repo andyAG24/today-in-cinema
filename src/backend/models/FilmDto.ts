@@ -1,7 +1,9 @@
 import { Country, Film, Genre, ProductionStatus } from "types";
 
+export type KinopoiskID = number;
+
 export interface FilmDto {
-  kinopoiskId: number;
+  kinopoiskId: KinopoiskID;
   imdbId: string;
   nameRu: string;
   nameEn: string;
