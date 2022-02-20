@@ -11,12 +11,11 @@ export const FilmList = ({ list }: PropTypes) => {
     <Grid 
       container
       direction="row"
-      // justifyContent="center"
       alignItems="stretch"
       spacing={3} 
     >
       {list.map((item) => (
-        <Grid item key={item.kinopoiskId} xs={3}>
+        <Grid item key={item.kinopoiskId} xs={4} md={3} xl={2}>
           <FilmItem key={item.kinopoiskId} film={item} />
         </Grid>
       ))}

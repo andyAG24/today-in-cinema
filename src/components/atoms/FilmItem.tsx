@@ -3,21 +3,13 @@ import { PremiereResponseItem } from 'backend/models/PremiereResponseItemDto';
 import React from 'react';
 import Moment from 'react-moment';
 import 'moment/locale/ru';
+import { getStringFromArray } from 'utils/constants/string';
 
 interface PropTypes {
   film: PremiereResponseItem;
 }
 
 export const FilmItem = ({ film }: PropTypes) => {
-
-  const getStringFromArray = (array: any[], field: string): string => {
-    let result = '';
-    array.forEach((item, index, array) => {
-      const kek = index === array.length - 1 ? item[field] : item[field] + ', ';
-      result += kek; 
-    });
-    return result;
-  };
 
   return (
     <Card style={{ height: '100%' }}>
