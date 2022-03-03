@@ -11,15 +11,18 @@ interface PropTypes {
 }
 
 export const FilmItem = ({ film }: PropTypes) => {
+  const filmName = film.nameRu ? film.nameRu : film.nameEn;
+  const originalFilmNameAndYear = (film.nameEn ? film.nameEn + ', ': '') + film.year;
+  
   return (
     <Card style={{ height: '100%' }}>
       <CardActionArea style={{ height: '100%' }} component={Link} to={`/film/${film.kinopoiskId}`}>
         <CardHeader
           style={{ overflow: 'hidden', display: 'block' }}
           title={
-            <Tooltip title={film.nameRu ? film.nameRu: film.nameEn} arrow>
+            <Tooltip title={filmName} arrow key={'filmName'}>
               <Typography noWrap gutterBottom variant='h6' component='h4'>
-                {film.nameRu ? film.nameRu: film.nameEn}
+                {filmName}
               </Typography>
             </Tooltip>
           }
@@ -44,25 +47,25 @@ export const FilmItem = ({ film }: PropTypes) => {
           component='img'
           height='294'
           image={film.posterUrl}
-          alt={film.nameRu}
+          alt={filmName}
         />
         <CardContent>
           <Grid container direction={'column'} spacing={2}>
             <Grid item container direction={'row'}>
               <Grid item>
-                <Typography variant='body1' color='text.secondary'>
-                  {film.nameEn ? film.nameEn + ', ': ''}{film.year}
+                <Typography variant='body1' color='text.secondary' key={'originalFilmNameAndYear'}>
+                  {originalFilmNameAndYear}
                 </Typography>
               </Grid>
             </Grid>
             <Grid item container direction={'column'} spacing={1}>
               <Grid item>
-                <Typography variant='body2' color='text.secondary'>
+                <Typography variant='body2' color='text.secondary' key={'genres'}>
                   Жанр: {getStringFromNestedObjectArrayByField(film.genres, 'genre')}
                 </Typography>
               </Grid>
               <Grid item>
-                <Typography variant='body2' color='text.secondary'>
+                <Typography variant='body2' color='text.secondary' key={'countries'}>
                   {getStringFromNestedObjectArrayByField(film.countries, 'country')}
                 </Typography>
               </Grid>

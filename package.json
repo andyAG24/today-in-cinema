@@ -32,7 +32,7 @@
     "build": "react-scripts build",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "test:c": "jest --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -61,26 +61,19 @@
     "@babel/preset-flow": "^7.16.7",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
+    "@testing-library/react-hooks": "^7.0.2",
     "@types/enzyme": "^3.10.11",
     "@types/lodash": "^4.14.178",
+    "@types/redux-mock-store": "^1.0.3",
+    "@types/redux-thunk": "^2.1.0",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
     "babel-jest": "^27.5.1",
     "jest": "^27.5.1",
-    "react-test-renderer": "^17.0.2"
-  },
-  "jest": {
-    "coveragePathIgnorePatterns": [
-      "src/types/",
-      "src/backend/models/",
-      ".type.ts",
-      "src/utils/constants/",
-      "setupTests.ts",
-      "index.tsx",
-      "react-app-env.d.ts"
-    ],
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "src/**/*.{ts,tsx}"
-    ]
+    "jest-fetch-mock": "^3.0.3",
+    "jsdom": "19.0.0",
+    "jsdom-global": "3.0.2",
+    "react-test-renderer": "^17.0.2",
+    "redux-mock-store": "^1.5.4",
+    "redux-thunk": "^2.4.1"
   }
 }
