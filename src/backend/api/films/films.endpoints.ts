@@ -3,7 +3,7 @@ import { PremiereGetResponseParams } from "./films.type";
 
 const controller = 'films';
 
-const urls = {
+export const urls = {
   films: `${controller}`,
   premieres: `${controller}/premieres`,
 };
