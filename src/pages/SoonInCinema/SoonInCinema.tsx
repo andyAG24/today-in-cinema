@@ -5,11 +5,11 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useLazyGetPremieresQuery } from 'redux/films/films.api';
 import { monthsValuesEn, monthsValuesRu } from 'utils/constants/months';
 import * as _ from 'lodash';
+import { useCurrentMonthAndYear } from 'utils/hooks/date';
 
 export const SoonInCinema = () => {
   const now = moment().locale('en');
-  const year = +now.format('yyyy');
-  const currentMonthNumber = +now.format('M') - 1;
+  const { month: currentMonthNumber, year } = useCurrentMonthAndYear();
   const [monthNumber, setMonthNumber] = useState(currentMonthNumber);
   const [getPremieres, { data: filmData, isFetching }] = useLazyGetPremieresQuery();
 

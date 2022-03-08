@@ -1,5 +1,5 @@
 import React from 'react';
-import { getStringFromNestedObjectArrayByField } from './string';
+import { getStringFromNestedObjectArrayByField } from '.';
 
 describe('getStringFromNestedObjectArrayByField', () => {
   it('several elements', () => {

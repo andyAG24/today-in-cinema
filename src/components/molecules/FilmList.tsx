@@ -1,3 +1,4 @@
+import React from 'react';
 import { Grid } from "@mui/material";
 import { PremiereResponseItem } from "backend/models/PremiereResponseItemDto";
 import { FilmItem } from "components/atoms/FilmItem";

@@ -3,7 +3,7 @@ import { PremiereResponseItem } from 'backend/models/PremiereResponseItemDto';
 import React from 'react';
 import Moment from 'react-moment';
 import 'moment/locale/ru';
-import { getStringFromNestedObjectArrayByField } from 'utils/string/string';
+import { getStringFromNestedObjectArrayByField } from 'utils/string';
 import { Link } from 'react-router-dom';
 
 interface PropTypes {
