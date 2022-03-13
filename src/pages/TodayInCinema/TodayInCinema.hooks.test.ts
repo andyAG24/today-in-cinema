@@ -3,20 +3,8 @@ import { renderHook } from '@testing-library/react-hooks';
 import { useAlreadyInCinemaFilms } from './TodayInCinema.hooks';
 
 jest.mock('redux/films/films.api', () => jest.fn());
-const filmArr = [{
-  kinopoiskId: 301,
-  nameRu: 'Матрица',
-  nameEn: 'The Matrix',
-  year: 1999,
-  posterUrl: 'https://kinopoiskapiunofficial.tech/images/posters/kp/301.jpg',
-  posterUrlPreview: 'https://kinopoiskapiunofficial.tech/images/posters/kp_small/301.jpg',
-  countries: [{ country: 'США', }, { country: 'Австралия', }],
-  genres: [{ genre: 'фантастика' }, { genre: 'боевик' },],
-  duration: 136,
-  premiereRu: '1999-10-14',
-}];
 jest.mock('redux/films/films.api', () => ({
-  useGetPremieresQuery: jest.fn(() => ({ data: filmArr }))
+  useGetPremieresQuery: jest.fn(() => ({ data: require('backend/models/PremiereResponseItemDto.mock').premieresMock }))
 }));
 
 describe('TodayInCinema hooks', () => {

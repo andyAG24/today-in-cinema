@@ -41,7 +41,7 @@ export const SoonInCinema = () => {
           id='combo-box-demo'
           options={monthsValuesRu}
           value={monthsValuesRu[monthNumber]}
-          onChange={(event, value) => value && onMonthChange(value)}
+          onInputChange={(event, value) => value && onMonthChange(value as unknown as typeof monthsValuesRu[number])}
           sx={{ width: 300 }}
           renderInput={(params) => <TextField {...params} label='Месяц' />}
         />

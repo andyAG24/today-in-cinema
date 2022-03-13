@@ -5,7 +5,8 @@
         "@babel/plugin-transform-modules-commonjs",
         "@babel/plugin-transform-typescript",
         "@babel/plugin-transform-strict-mode",
-        "@babel/plugin-transform-react-jsx"
+        "@babel/plugin-transform-react-jsx",
+        "@babel/transform-runtime"
       ]
     }
   },

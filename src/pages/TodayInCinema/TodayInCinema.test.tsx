@@ -7,22 +7,11 @@ import { BrowserRouter } from 'react-router-dom';
 import { FilmList } from 'components/molecules/FilmList';
 import { FilmItem } from 'components/atoms/FilmItem';
 import { LinearProgress } from '@mui/material';
+import { premieresMock } from 'backend/models/PremiereResponseItemDto.mock';
 
 jest.mock('redux/films/films.api', () => jest.fn());
-const filmArr = [{
-  kinopoiskId: 301,
-  nameRu: 'Матрица',
-  nameEn: 'The Matrix',
-  year: 1999,
-  posterUrl: 'https://kinopoiskapiunofficial.tech/images/posters/kp/301.jpg',
-  posterUrlPreview: 'https://kinopoiskapiunofficial.tech/images/posters/kp_small/301.jpg',
-  countries: [{ country: 'США', }, { country: 'Австралия', }],
-  genres: [{ genre: 'фантастика' }, { genre: 'боевик' },],
-  duration: 136,
-  premiereRu: '1999-10-14',
-}];
 jest.mock('./TodayInCinema.hooks', () => ({
-  useAlreadyInCinemaFilms: jest.fn().mockReturnValue(filmArr)
+  useAlreadyInCinemaFilms: jest.fn().mockReturnValue(require('backend/models/PremiereResponseItemDto.mock').premieresMock)
 }));
 
 describe('TodayInCinema', () => {
@@ -47,8 +36,8 @@ describe('TodayInCinema', () => {
     const filmItem = filmList.find(FilmItem);
     const listCount = filmList.prop('list').length;
 
-    expect(listCount).toBe(filmArr.length);
-    expect(filmItem).toHaveLength(filmArr.length);
+    expect(listCount).toBe(premieresMock.length);
+    expect(filmItem).toHaveLength(premieresMock.length);
   }); 
 
   it('should render LinearProgress', () => {
